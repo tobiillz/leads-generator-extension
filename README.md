@@ -1,6 +1,6 @@
 # leads-generator-extension
 
-This is Chrome leads generator extension.
+This is a Chrome leads generator extension.
 
 It is a useful tool for individuals, particularly sales people trying 
 
