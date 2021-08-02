@@ -1,4 +1,4 @@
-let myLeads = ["Opeoluwa","Emeka","Tunji","Dele"]
+let myLeads = []
 const inputEl = document.getElementById('input-el')
 const inputBtn = document.querySelector('.input-btn')
 const ulEl = document.getElementById('list-el')
