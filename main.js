@@ -7,7 +7,10 @@ const ulEl = document.getElementById('list-el')
 inputBtn.addEventListener('click',function(){
     myLeads.push(inputEl.value)
     // console.log(myLeads)  
+    // clear out the input field
+    inputEl.value = ""
     renderLeads()
+    
 })
 
 
@@ -15,13 +18,20 @@ function renderLeads(){
     let listItems = ""
     for (let i=0; i<myLeads.length; i++){
         // console.log(myLeads[i])
-        listItems += "<li>" + myLeads[i] + "</li>"
+        // Use template literals to break your code to multiple lines
+        listItems +=  `
+        <li> 
+            <a href='${myLeads[i]}' target='_blank'> 
+                ${myLeads[i]}
+            </a>
+        </li>`
         //create list element
         //const li = document.createElement('li')
         //set text content 
         //li.textContent = myLeads[i]
         //append list element to ul
         //ulEl.append(li)
+        // listItems =  + myLeads[i] + "</a>"
         
     }ulEl.innerHTML = listItems  
 }
