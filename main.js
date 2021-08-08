@@ -1,28 +1,28 @@
+//chrome://extensions/
+
 let myLeads = []
+let oldLeads = []
 const inputEl = document.getElementById('input-el')
 const inputBtn = document.querySelector('.input-btn')
 const ulEl = document.getElementById('list-el')
+const deleteBtn = document.querySelector('#delete-btn')
+const tabBtn = document.querySelector('.tab-btn')
+const leadsFromlocalStorage = JSON.parse(localStorage.getItem('myleads'))
 
+if (leadsFromlocalStorage){
+    myLeads = leadsFromlocalStorage
+    render(myLeads)
+}
 
-inputBtn.addEventListener('click',function(){
-    myLeads.push(inputEl.value)
-    // console.log(myLeads)  
-    // clear out the input field
-    inputEl.value = ""
-    renderLeads()
-    
-})
-
-
-function renderLeads(){
+function render(leads){
     let listItems = ""
-    for (let i=0; i<myLeads.length; i++){
+    for (let i=0; i<leads.length; i++){
         // console.log(myLeads[i])
         // Use template literals to break your code to multiple lines
         listItems +=  `
         <li> 
-            <a href='${myLeads[i]}' target='_blank'> 
-                ${myLeads[i]}
+            <a href='https://${leads[i]}' target='_blank'> 
+                ${leads[i]}
             </a>
         </li>`
         //create list element
@@ -36,14 +36,27 @@ function renderLeads(){
     }ulEl.innerHTML = listItems  
 }
 
+inputBtn.addEventListener('click',function(){
+    localStorage.clear()
+    myLeads.push(inputEl.value)
+    // console.log(myLeads)  
+    // clear out the input field
+    inputEl.value = "" 
+    // console.log(localStorage.getItem('myleads'))
+    localStorage.setItem('myleads',  JSON.stringify(myLeads))  
+    render(myLeads)
+    
+})
 
+deleteBtn.addEventListener('click', function(){
+    // console.log('double clicked')
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
 
+})
 
-let tabBtn = document.querySelector('.tab-btn')
 tabBtn.addEventListener('click',function(){
     console.log(inputEl.value)
 })
-let deleteBtn = document.querySelector('#delete-btn')
-deleteBtn.addEventListener('click',function(){
-    console.log('delete clicked')
-})
+
