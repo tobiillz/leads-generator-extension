@@ -8,7 +8,9 @@ const ulEl = document.getElementById('list-el')
 const deleteBtn = document.querySelector('#delete-btn')
 const tabBtn = document.querySelector('.tab-btn')
 const leadsFromlocalStorage = JSON.parse(localStorage.getItem('myleads'))
-
+const tabs =[
+    {url : }
+]
 if (leadsFromlocalStorage){
     myLeads = leadsFromlocalStorage
     render(myLeads)
@@ -48,6 +50,10 @@ inputBtn.addEventListener('click',function(){
     
 })
 
+tabBtn.addEventListener('click',function(){
+    console.log(inputEl.value)
+})
+
 deleteBtn.addEventListener('click', function(){
     // console.log('double clicked')
     localStorage.clear()
@@ -56,7 +62,4 @@ deleteBtn.addEventListener('click', function(){
 
 })
 
-tabBtn.addEventListener('click',function(){
-    console.log(inputEl.value)
-})
 
