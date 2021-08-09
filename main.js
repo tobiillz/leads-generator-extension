@@ -9,7 +9,7 @@ const deleteBtn = document.querySelector('#delete-btn')
 const tabBtn = document.querySelector('.tab-btn')
 const leadsFromlocalStorage = JSON.parse(localStorage.getItem('myleads'))
 const tabs =[
-    {url : }
+    {url : "www.shoppashub.com"}
 ]
 if (leadsFromlocalStorage){
     myLeads = leadsFromlocalStorage
@@ -51,7 +51,15 @@ inputBtn.addEventListener('click',function(){
 })
 
 tabBtn.addEventListener('click',function(){
-    console.log(inputEl.value)
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+        let url = tabs[0].url;
+        // use `url` here inside the callback because it's asynchronous!
+    });
+   
+    // console.log(tabs[0].url)
+    myLeads.push(tabs[0].url)
+    localStorage.setItem('myleads',  JSON.stringify(myLeads))
+    render(myLeads)
 })
 
 deleteBtn.addEventListener('click', function(){
