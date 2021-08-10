@@ -21,7 +21,8 @@ function render(leads){
         // Use template literals to break your code to multiple lines
         listItems +=  `
         <li> 
-            <a href='https://${leads[i]}' target='_blank'> 
+        
+            <a href='${leads[i]}' target='_blank'> 
                 ${leads[i]}
             </a>
         </li>`
